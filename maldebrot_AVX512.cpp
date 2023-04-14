@@ -12,11 +12,11 @@ void set_maldebrot_avx512 (sf::Uint8* pixels, float scale, int cx, int cy, int r
 
         for (int dx = 0; dx < 1280; dx += VECT_SIZE_AVX512, x0 += VECT_SIZE_AVX512 * scale)
         {
-            __m512 X0 = _mm512_set_ps (x0,  x0 + scale, x0 +  2 * scale, x0 +  3 * scale, 
-                                       x0 +  4 * scale, x0 +  5 * scale, x0 +  6 * scale, 
-                                       x0 +  7 * scale, x0 +  8 * scale, x0 +  9 * scale,
-                                       x0 + 10 * scale, x0 + 11 * scale, x0 + 12 * scale,
-                                       x0 + 13 * scale, x0 + 14 * scale, x0 + 15 * scale);
+            __m512 X0 = _mm512_set_ps (x0 + 15 * scale, x0 + 14 * scale, x0 + 13 * scale, 
+                                       x0 + 12 * scale, x0 + 11 * scale, x0 + 10 * scale, 
+                                       x0 +  9 * scale, x0 +  8 * scale, x0 +  7 * scale,
+                                       x0 +  6 * scale, x0 +  5 * scale, x0 +  4 * scale,
+                                       x0 +  3 * scale, x0 +  2 * scale, x0 + scale, x0);
             __m512 Y0 = _mm512_set1_ps (y0);
 
             __m512 X = X0;
