@@ -52,8 +52,6 @@ for (int dy = 0; dy < YMax; dy++)
 
             N++;
         }
-
-        set_pixel (pixels, dx, dy, N); // Вычисляет цвет пикселя
     }
 }
 ```
@@ -61,7 +59,7 @@ for (int dy = 0; dy < YMax; dy++)
 
 Производительность неоптимизированного алгоритма пропорциональна количеству пикселей. 
 
-## Принципы оптимизации
+### Принципы оптимизации
 
 Теперь оптимизируем данный код, используя набор команд SIMD-инструкции. Ознакомиться с командами можно на сайте: https://www.laruence.com/sse.
 
@@ -118,12 +116,6 @@ for (int dy = 0; dy < YMax; dy++)
 
             N = _mm256_sub_epi32 (N, _mm256_castps_si256(cmp));
             mask = _mm256_movemask_ps (cmp);
-        }
-
-        for (int i = 0; i < VECT_SIZE_AVX2; i++)
-        {
-            int* N_int = (int*)(&N);
-            set_pixel(pixels, dx + i, dy, N_int[i]);
         }
     }
 }
