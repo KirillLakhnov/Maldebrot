@@ -163,3 +163,20 @@ for (int dy = 0; dy < YMax; dy++)
 
 ## Вывод
 Оптимизация алгоритма рисования множества Мандельброта с использованием инстукций AVX512 и флага компиляции -Ofast позволяет его ускорить в **0.69/0.03 = 23** раза.
+
+## Источники и литератрура 
+
+1. SIMD:
+    - https://ru.wikipedia.org/wiki/SIMD
+    - https://www.laruence.com/sse
+
+2. Множество Мандельброта:
+    - https://ru.wikipedia.org/wiki/Альфа-канал
+
+3. BMP файлы:
+    - https://ru.wikipedia.org/wiki/BMP
+
+4. SFML
+    - https://www.sfml-dev.org/
+    - https://ru.wikipedia.org/wiki/SFML
+    - https://ps-group.github.io/ps1/lesson_sfml_1
