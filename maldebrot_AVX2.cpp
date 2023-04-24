@@ -2,6 +2,8 @@
 
 void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
+    assert (pixels);
+    
     const __m256  RMAX = _mm256_set1_ps (float(rMax*rMax));
     const __m256i NMAX = _mm256_set1_epi32 (NMax);
 
@@ -44,8 +46,7 @@ void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMa
 
                 N = _mm256_sub_epi32 (N, _mm256_castps_si256(cmp));
                 mask = _mm256_movemask_ps (cmp);
-                //printf ("%d\n", mask);
-            }
+            } 
 
             for (int i = 0; i < VECT_SIZE_AVX2; i++)
             {

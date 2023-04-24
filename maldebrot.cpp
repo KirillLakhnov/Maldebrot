@@ -85,6 +85,7 @@ void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
         fps.update ();
 
         set_maldebrot (pixels, scale, x, y, 100);
+
         screen.update (pixels);
 
         sprintf(fps_buffer, "%.2f", fps.getFPS());
@@ -100,6 +101,8 @@ void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
 
 void set_pixel (sf::Uint8* pixels, int dx, int dy, int index)
 {
+    assert (pixels);
+
     pixels[(1280 * dy + dx) * 4 + 0] = 5 * tanh (index);
     pixels[(1280 * dy + dx) * 4 + 1] = sinh (index);
     pixels[(1280 * dy + dx) * 4 + 2] = 255 - sin (index) * 12 * cosh(index);

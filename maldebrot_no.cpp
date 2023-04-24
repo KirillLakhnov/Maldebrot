@@ -11,6 +11,8 @@ inline void set_ps (float arr[8], float num0, float num1, float num2, float num3
 
 void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
+    assert (pixels);
+    
     const float RMAX = float(rMax*rMax);
 
     for (int dy = 0; dy < 720; dy++)
@@ -20,12 +22,12 @@ void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMa
 
         for (int dx = 0; dx < 1280; dx++, x0 += scale)
         {
-            int index = 0;
+            int N = 0;
 
             float x = x0;
             float y = y0;
 
-            while (index < NMax)
+            while (N < NMax)
             {
                 float x2 = x*x;
                 float y2 = y*y;
@@ -41,9 +43,10 @@ void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMa
                 x = x2 - y2 + x0;
                 y = 2*xy + y0;
 
-                index++;
+                N++;
             }
-            set_pixel (pixels, dx, dy, index);
+
+            set_pixel (pixels, dx, dy, N);
         }
     }
 }

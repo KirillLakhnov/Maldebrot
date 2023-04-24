@@ -1,7 +1,9 @@
-#include "maldebrot_AVX2.hpp"
+#include "maldebrot_AVX512.hpp"
 
 void set_maldebrot_avx512 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
+    assert (pixels);
+    
     const __m512  RMAX = _mm512_set1_ps (float(rMax*rMax));
     const __m512i NMAX = _mm512_set1_epi32 (NMax);
 
@@ -47,7 +49,7 @@ void set_maldebrot_avx512 (sf::Uint8* pixels, float scale, int cx, int cy, int r
                 
                 index++;
             }
-
+            
             for (int i = 0; i < VECT_SIZE_AVX512; i++)
             {
                 int* N_int = (int*)(&N);

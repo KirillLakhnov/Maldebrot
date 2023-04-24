@@ -2,6 +2,8 @@
 
 void set_maldebrot_sse (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
+    assert (pixels);
+
     const __m128  RMAX = _mm_set1_ps (float(rMax*rMax));
     const __m128i NMAX = _mm_set1_epi32 (NMax);
 
