@@ -80,8 +80,11 @@ for (int dy = 0; dy < YMax; dy++)
 
     for (int dx = 0; dx < XMax; dx += VECT_SIZE_AVX2, x0 += VECT_SIZE_AVX2 * scale)
     {
-        __m256 X0 = _mm256_set_ps (x0 + 7 * scale, x0 + 6 * scale, x0 + 5 * scale, 
-                                   x0 + 4 * scale, x0 + 3 * scale, x0 + 2 * scale, x0 + scale, x0);
+        __m256 X0 = _mm256_set_ps (x0 + 7 * scale, x0 + 6 * scale, 
+                                   x0 + 5 * scale, x0 + 4 * scale, 
+                                   x0 + 3 * scale, x0 + 2 * scale, 
+                                   x0 + scale, x0);
+                                   
         __m256 Y0 = _mm256_set1_ps (y0);
 
         __m256 X = X0;
@@ -116,7 +119,6 @@ for (int dy = 0; dy < YMax; dy++)
         }
     }
 }
-
 ```
 ## Результаты оптимизаций
 
