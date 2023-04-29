@@ -44,12 +44,12 @@ void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
                 {
                     switch (event.key.code)
                     {
-                        case (sf::Keyboard::Equal):
+                        case (sf::Keyboard::Z):
                         {
                             scale *= 0.75;
                             break;
                         }
-                        case (sf::Keyboard::Subtract):
+                        case (sf::Keyboard::X):
                         {
                             scale *= 1.25;
                             break;
