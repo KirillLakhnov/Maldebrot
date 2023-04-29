@@ -1,5 +1,5 @@
 O_FLAGS := -Ofast
-NO_DRAW_MODE := 
+NO_DRAW_MODE := -DNO_DRAW_MODE
 
 no_o: main.cpp maldebrot.cpp maldebrot_no.cpp
 	g++ main.cpp maldebrot.cpp maldebrot_no.cpp -lsfml-graphics -lsfml-window -lsfml-system $(O_FLAGS) $(NO_DRAW_MODE) -DNO_O

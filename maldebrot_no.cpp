@@ -9,7 +9,7 @@ inline void set_ps (float arr[8], float num0, float num1, float num2, float num3
                                   float num4, float num5, float num6, float num7) {arr[0] = num0; arr[1] = num1; arr[2] = num2; arr[3] = num3;
                                                                                    arr[4] = num4; arr[5] = num5; arr[6] = num6; arr[7] = num7;}
 
-inline void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
+void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
     assert (pixels);
     
@@ -51,7 +51,7 @@ inline void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, 
     }
 }
 
-inline void set_maldebrot_array (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
+void set_maldebrot_array (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
     const float RMAX = float(rMax*rMax);
 

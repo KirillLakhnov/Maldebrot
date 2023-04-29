@@ -10,6 +10,6 @@
 
 #include "maldebrot.hpp"
 
-inline void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
+void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
 
 #endif //MALDEBROT_AVX2

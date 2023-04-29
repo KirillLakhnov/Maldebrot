@@ -1,6 +1,6 @@
 #include "maldebrot_AVX2.hpp"
 
-inline void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
+void set_maldebrot_avx2 (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
     assert (pixels);
     

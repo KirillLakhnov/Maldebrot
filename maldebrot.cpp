@@ -1,19 +1,7 @@
 #include "maldebrot.hpp"
 
-inline void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
+void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
 {
-    sf::RenderWindow window (sf::VideoMode(1280, 720), "Maldebrot");
-
-    sf::Font font;
-    font.loadFromFile ("sfml_files/SrbijaSans.otf");
-
-    sf::Text text_fps;
-    text_fps.setFont (font);
-    text_fps.setPosition (25, 25);
-    text_fps.setCharacterSize (40);
-    text_fps.setColor (sf::Color (20, 250, 20));
-    text_fps.setStyle (sf::Text::Bold);
-
     FPS fps;
     char fps_buffer[10];
 
@@ -26,6 +14,19 @@ inline void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
     float scale = 0.004;
     int x = 760;
     int y = 360;
+
+#ifndef NO_DRAW_MODE
+    sf::RenderWindow window (sf::VideoMode(1280, 720), "Maldebrot");
+
+    sf::Font font;
+    font.loadFromFile ("sfml_files/SrbijaSans.otf");
+
+    sf::Text text_fps;
+    text_fps.setFont (font);
+    text_fps.setPosition (25, 25);
+    text_fps.setCharacterSize (40);
+    text_fps.setColor (sf::Color (20, 250, 20));
+    text_fps.setStyle (sf::Text::Bold);
 
     while (window.isOpen())
     {
@@ -81,25 +82,43 @@ inline void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
                 }
             }
         }
+#endif
 
+#ifdef NO_DRAW_MODE
+        float fps_average = 0;
+
+        for (int i = 0; i < 100; i++)
+        {
+            fps.update ();
+            set_maldebrot (pixels, scale, x, y, 100);
+
+            fps_average += fps.getFPS();
+        }
+
+        fps_average = fps_average/100.;
+
+        printf ("%.2f", fps_average);
+#endif
+
+#ifndef NO_DRAW_MODE
         fps.update ();
-
         set_maldebrot (pixels, scale, x, y, 100);
-
-        screen.update (pixels);
 
         sprintf(fps_buffer, "%.2f", fps.getFPS());
         sf::String str(fps_buffer);
         text_fps.setString(str);
+
+        screen.update (pixels);
 
         window.clear ();
         window.draw(sprite);
         window.draw(text_fps);
         window.display ();
     }
+#endif
 }
 
-inline void set_pixel (sf::Uint8* pixels, int dx, int dy, int index)
+void set_pixel (sf::Uint8* pixels, int dx, int dy, int index)
 {
     assert (pixels);
 
