@@ -1,6 +1,6 @@
 #include "maldebrot_SSE.hpp"
 
-void set_maldebrot_sse (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
+inline void set_maldebrot_sse (sf::Uint8* pixels, float scale, int cx, int cy, int rMax)
 {
     assert (pixels);
 

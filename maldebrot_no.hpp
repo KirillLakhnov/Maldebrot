@@ -9,8 +9,8 @@
 
 #include "maldebrot.hpp"
 
-void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
+inline void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
 
-void set_maldebrot_array (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
+inline void set_maldebrot_array (sf::Uint8* pixels, float scale, int cx, int cy, int rMax);
 
 #endif //MALDEBROT_NO

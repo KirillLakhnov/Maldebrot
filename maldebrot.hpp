@@ -40,8 +40,8 @@ class FPS
         }
 };
 
-void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int));
+inline void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int));
 
-void set_pixel (sf::Uint8* pixels, int dx, int dy, int index);
+inline void set_pixel (sf::Uint8* pixels, int dx, int dy, int index);
 
 #endif // MALDEBROT

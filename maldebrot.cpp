@@ -1,6 +1,6 @@
 #include "maldebrot.hpp"
 
-void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
+inline void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
 {
     sf::RenderWindow window (sf::VideoMode(1280, 720), "Maldebrot");
 
@@ -99,7 +99,7 @@ void maldebrot (void (*set_maldebrot) (sf::Uint8*, float, int, int, int))
     }
 }
 
-void set_pixel (sf::Uint8* pixels, int dx, int dy, int index)
+inline void set_pixel (sf::Uint8* pixels, int dx, int dy, int index)
 {
     assert (pixels);
 
