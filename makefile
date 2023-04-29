@@ -1,4 +1,4 @@
-O_FLAGS := -Ofast
+O_FLAGS := 
 NO_DRAW_MODE := -DNO_DRAW_MODE
 
 no_o: main.cpp maldebrot.cpp maldebrot_no.cpp

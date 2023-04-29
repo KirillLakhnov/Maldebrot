@@ -49,12 +49,18 @@ void set_maldebrot_avx512 (sf::Uint8* pixels, float scale, int cx, int cy, int r
                 
                 index++;
             }
-            
+
+#ifdef NO_DRAW_MODE
+                volatile __m512i NR = N; 
+#endif
+
+#ifndef NO_DRAW_MODE       
             for (int i = 0; i < VECT_SIZE_AVX512; i++)
             {
                 int* N_int = (int*)(&N);
                 set_pixel(pixels, dx + i, dy, N_int[i]);
             }
+#endif
         }
     }
 }

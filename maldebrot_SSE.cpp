@@ -48,11 +48,17 @@ void set_maldebrot_sse (sf::Uint8* pixels, float scale, int cx, int cy, int rMax
                 mask = _mm_movemask_ps(cmp);
             }
 
+#ifdef NO_DRAW_MODE
+                volatile __m128i NR = N; 
+#endif
+
+#ifndef NO_DRAW_MODE
             for (int i = 0; i < VECT_SIZE_SSE; i++)
             {
                 int* N_int = (int*)(&N);
                 set_pixel(pixels, dx + i, dy, N_int[i]);
             }
+#endif
         }
     }
 }

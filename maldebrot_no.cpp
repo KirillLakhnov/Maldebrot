@@ -46,7 +46,13 @@ void set_maldebrot_no_o (sf::Uint8* pixels, float scale, int cx, int cy, int rMa
                 N++;
             }
 
+#ifdef NO_DRAW_MODE
+            volatile int NR = N; 
+#endif
+
+#ifndef NO_DRAW_MODE
             set_pixel (pixels, dx, dy, N);
+#endif
         }
     }
 }
@@ -99,10 +105,12 @@ void set_maldebrot_array (sf::Uint8* pixels, float scale, int cx, int cy, int rM
                 for (int i = 0; i < 8; i++) mask += cmp[i];
             }
 
+#ifndef NO_DRAW_MODE
             for (int i = 0; i < 8; ++i)
             {
                 set_pixel(pixels, dx + i, dy, N[i]);
             }
+#endif
         }
     }
 }
